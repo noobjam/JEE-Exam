@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jstl/core">
+
+<head>
+    <title>Employees Affectation</title>
+</head>
+
+<body>
+<h2>Employees Affectation</h2>
+
+<h:form>
+    <h:outputLabel for="project" value="Select Project:"/>
+    <h:selectOneMenu id="project" value="#{projectController.selectedProject}">
+        <f:selectItems value="#{projectBean.availableProjects}" var="project" itemValue="#{project.id}" itemLabel="#{project.name}"/>
+    </h:selectOneMenu>
+
+    <h:outputLabel for="employee" value="Employee Name:"/>
+    <h:selectOneMenu id="employee" value="#{employeeController.getEmployes()}">
+        <f:selectItems value="#{projectController.availableEmployees}" var="employee" itemValue="#{employee.id}" itemLabel="#{employee.name}"/>
+    </h:selectOneMenu>
+
+    <h:commandButton value="Affecter project" action="#{projectController.assignEmployeeToProject}"/>
+</h:form>
+</body>
+
+</html>
